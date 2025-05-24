@@ -28,8 +28,14 @@ impl GitRepo {
             let tree = self.repo.find_tree(tree_id)?;
             self.repo.diff_tree_to_tree(Some(&empty_tree), Some(&tree), Some(&mut diff_options))?
         } else {
-            // For normal commits, diff against the index
-            self.repo.diff_index_to_workdir(None, Some(&mut diff_options))?
+            // For normal commits, diff against HEAD using the index
+            let head_tree = self.repo.head()?.peel_to_tree()?;
+            let mut index = self.repo.index()?;
+            index.add_all(["*"].iter(), git2::IndexAddOption::DEFAULT, None)?;
+            index.write()?;
+            let tree_id = index.write_tree()?;
+            let tree = self.repo.find_tree(tree_id)?;
+            self.repo.diff_tree_to_tree(Some(&head_tree), Some(&tree), Some(&mut diff_options))?
         };
         
         let mut diff_string = String::new();
