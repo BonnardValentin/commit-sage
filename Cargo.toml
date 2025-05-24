@@ -1,0 +1,57 @@
+[package]
+name = "git-commit-sage"
+version = "0.2.7"
+edition = "2021"
+description = "A smart Git commit message generator using AI"
+authors = ["Bonnard Valentin <up.north.gate@protonmail.com>"]
+license = "MIT"
+repository = "https://github.com/BonnardValentin/commit-sage"
+keywords = ["git", "commit", "ai", "openai", "conventional-commits"]
+categories = ["command-line-utilities", "development-tools"]
+
+# Binary configuration
+[[bin]]
+name = "git-commit-sage"
+path = "src/main.rs"
+
+# Library configuration
+[lib]
+name = "git_commit_sage"
+path = "src/lib.rs"
+
+[dependencies]
+# Git integration
+git2 = { version = "0.18", default-features = false }
+
+# API and serialization
+reqwest = { version = "0.11", features = ["json", "rustls-tls"], default-features = false }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+toml = "0.8"
+async-trait = "0.1"
+
+# CLI and configuration
+clap = { version = "4.4", features = ["derive", "env"] }
+dotenvy = "0.15"  # Modern fork of dotenv
+
+# Async runtime
+tokio = { version = "1.36", features = ["macros", "rt-multi-thread"] }
+
+# Error handling and utilities
+thiserror = "1.0"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# Token counting for API optimization
+tiktoken-rs = "0.5"
+
+[dev-dependencies]
+tokio-test = "0.4"
+pretty_assertions = "1.4"
+test-case = "3.3"
+
+[profile.release]
+lto = true
+codegen-units = 1
+strip = true
+panic = "abort" 

@@ -1,0 +1,61 @@
+# Example configuration file for git-commit-sage
+
+[ai]
+# The AI model to use
+model = "mistralai/Mixtral-8x7B-Instruct-v0.1"
+# Temperature for model output (0.0 to 1.0)
+temperature = 0.3
+# Maximum tokens in response
+max_tokens = 100
+# Stop sequences for the model
+stop_sequences = ["\n"]
+# System prompt for the AI
+system_prompt = """
+You are a highly skilled developer who writes perfect conventional commit messages.
+You analyze git diffs and generate commit messages following the Conventional Commits specification.
+Your messages are concise, descriptive, and follow the format: type(scope): description.
+The type must be one of: feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert.
+The scope is optional but should be included when relevant.
+The description should be clear and precise, written in imperative mood.
+"""
+# User prompt template
+user_prompt_template = """
+Generate a conventional commit message for the following git diff.
+The message must follow the exact conventional commit format.
+Only return the commit message, nothing else.
+
+Diff:
+{}
+"""
+
+[git]
+# Path to the git repository
+repo_path = "."
+# Whether to include untracked files in the diff
+include_untracked = true
+# Whether to show the diff before generating commit message
+show_diff = false
+
+[commit]
+# List of allowed commit types
+allowed_types = [
+    "feat",
+    "fix",
+    "docs",
+    "style",
+    "refactor",
+    "perf",
+    "test",
+    "build",
+    "ci",
+    "chore",
+    "revert"
+]
+# Maximum length of commit message
+max_length = 72
+# Whether to automatically commit after generating message
+auto_commit = false
+# Whether to verify commit message format
+verify_format = true
+# Whether to require user confirmation before committing
+require_confirmation = true 
