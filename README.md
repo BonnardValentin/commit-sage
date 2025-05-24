@@ -1,3 +1,38 @@
+# git-commit-sage 🧙‍♂️
+
+A smart Git commit message generator using AI, powered by Together.ai.
+
+## 📦 Installation
+
+### Option 1: Install from crates.io (Recommended)
+```bash
+# Install using cargo (Rust's package manager)
+$ cargo install git-commit-sage
+
+# Verify installation
+$ git-commit-sage --version
+git-commit-sage 0.2.6
+```
+
+### Option 2: Install from source
+```bash
+# Clone the repository
+$ git clone https://github.com/BonnardValentin/commit-sage.git
+$ cd commit-sage
+
+# Install using cargo
+$ cargo install --path .
+
+# Verify installation
+$ git-commit-sage --version
+git-commit-sage 0.2.6
+```
+
+### Requirements
+- Rust 1.70 or later (install via [rustup](https://rustup.rs/))
+- Git 2.0 or later
+- Together.ai API key (get one at [together.ai](https://together.ai))
+
 # 🧙‍♂️ Git Commit Sage
 
 > 🤖 Your AI-powered companion for writing perfect conventional commit messages
@@ -12,64 +47,6 @@
 - ⚡ Built-in support for Together.ai's Mixtral-8x7B model
 - 🛠️ Configurable via TOML and environment variables
 - 📦 Available as both a CLI tool and a Rust library
-
-## 🚀 Installation
-
-### As a CLI Tool
-
-```bash
-# Install via cargo
-$ cargo install git-commit-sage
-    Updating crates.io index
-  Downloaded git-commit-sage v0.1.0
-   Compiling git-commit-sage v0.1.0
-    Finished release [optimized] target(s) in 1m 12s
-  Installing ~/.cargo/bin/git-commit-sage
-   Installed package `git-commit-sage v0.1.0` 
-
-# Or build from source
-$ git clone https://github.com/yourusername/git-commit-sage
-Cloning into 'git-commit-sage'...
-done.
-
-$ cd git-commit-sage
-$ cargo install --path .
-    Finished release [optimized] target(s) in 1m 08s
-  Installing git-commit-sage
-   Installed package `git-commit-sage v0.1.0` (executable `git-commit-sage`)
-```
-
-### Updating
-
-```bash
-# If installed from crates.io
-$ cargo install git-commit-sage --force
-    Updating crates.io index
-  Downloaded git-commit-sage v0.1.1
-   Compiling git-commit-sage v0.1.1
-    Finished release [optimized]
-  Replacing ~/.cargo/bin/git-commit-sage
-   Installed package `git-commit-sage v0.1.1`
-
-# If installed from source
-$ cd git-commit-sage
-$ git pull  # Get latest changes
-$ cargo install --path . --force
-    Finished release [optimized]
-  Replacing ~/.cargo/bin/git-commit-sage
-   Installed package `git-commit-sage v0.1.1`
-
-# Verify the installation
-$ git-commit-sage --version
-git-commit-sage 0.1.1
-```
-
-### Uninstallation
-
-```bash
-$ cargo uninstall git-commit-sage
-    Removing ~/.cargo/bin/git-commit-sage
-```
 
 ## 🎯 Getting Started
 
